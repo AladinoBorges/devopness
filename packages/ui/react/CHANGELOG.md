@@ -1,5 +1,32 @@
 # @devopness/ui-react
 
+## 2.184.1
+
+### Patch Changes
+
+- [#2417](https://github.com/devopness/devopness/pull/2417) [`c5e30ec`](https://github.com/devopness/devopness/commit/c5e30eca62a1e86928ad06affc8c9b7a8aa77f35) Thanks [@AladinoBorges](https://github.com/AladinoBorges)! - Fix the `Alert` component to ensure consistent styling
+
+  ### What Changed
+  - The layout, spacing, alignment, and icon positioning were corrected to improve visual accuracy and component stability.
+    - Adjusting internal spacing and text alignment
+    - Correcting icon positioning and sizing
+    - Improving close button alignment and spacing
+    - Ensuring consistent border-radius application
+
+- [#2453](https://github.com/devopness/devopness/pull/2453) [`9060ac8`](https://github.com/devopness/devopness/commit/9060ac8c02f009e93029d157aa95fc007086f03c) Thanks [@AladinoBorges](https://github.com/AladinoBorges)! - Fix the React `widthPercent` warning about custom prop being forwarded to DOM elements.
+
+  ### What Changed
+  - Components fixed to stop forwarding transient styling props to DOM elements:
+    - `Skeleton` now uses transient props (`$widthPercent`, `$heightPercent`, etc.) so those values are consumed by styled-components and not passed to the DOM.
+
+- [#2464](https://github.com/devopness/devopness/pull/2464) [`46de84d`](https://github.com/devopness/devopness/commit/46de84dfbc00d5a553392c2511b4e318fdc77b71) Thanks [@AladinoBorges](https://github.com/AladinoBorges)! - Stop forwarding styling/transient props (like `hasError`, `iconPosition`, `removeArrows`, `noResize`) to DOM elements, this reduces React "unknown prop" warnings by ensuring styling-only props are consumed by `styled-components` and not forwarded to native elements.
+
+  ### What Changed
+  - Converted several styled-component props to transient props (prefixed with `$`) and stopped spreading internal styling props into DOM-rendered elements for the following components:
+    - `src/components/Forms/Input/*` (styled + component)
+    - `src/components/Forms/TextArea/*` (styled + component)
+    - `src/components/Forms/Autocomplete/*` (renderInput integration; avoid spreading MUI params into DOM)
+
 ## 2.184.0
 
 ### Minor Changes
